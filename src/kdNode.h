@@ -15,8 +15,8 @@ class KdNode { // Objet pour une cellule du Kd tree / Noeud d'un arbre ayant 0 o
 		
 		Vec3 refPoint; // Point au centre de la cellule
 		
-		// J'ai mit directement les 3 dimensions dans un seul paramètre de type de Vec3 (vectors) pour avoir un seul paramètre, mais sinon il faudrait 3 floats
-		// Ca permit aussi de ne pas avoir à testé la valeur de split_dim dès qu'on veut faire quelque chose
+		// J'ai mis directement les 3 dimensions dans un seul paramètre de type de Vec3 (vectors) pour avoir un seul paramètre, mais sinon il faudrait 3 floats
+		// Ca permet aussi de ne pas avoir à tester la valeur de split_dim dès qu'on veut faire quelque chose
 		Vec3 vectors; // Permet de connaitre les dimensions de la cellule, vectors[0] pour dimension en x, vectors[1] pour dimension en y, vectors[2] pour dimension en 2,  
 		
 	public:
@@ -117,8 +117,7 @@ class KdNode { // Objet pour une cellule du Kd tree / Noeud d'un arbre ayant 0 o
 			
 		}
 		
-		// Comparaison de 2 points, selon leur dimension x,y ou z (j'ai pas trouvé comment faire automatiquement 
-		// une division selon split_dim, c'est plus dur que ça en a l'air, le problème c'est que ces fonctions doivent obligatoirement être static donc on peut pas utiliser this->split_dim)
+		// Comparaison de 2 points, selon leur dimension x,y ou z
 		
 		static bool comparaisonSommetX(MeshVertex a, MeshVertex b){
 			return a.position[0] < b.position[0];
@@ -131,7 +130,7 @@ class KdNode { // Objet pour une cellule du Kd tree / Noeud d'un arbre ayant 0 o
 		}
 		
 		
-		void trier(){ // Trie les sommets qui sont dans la cellule, selon leur dimension split_dim (j'ai pas trouvé autrement que de tester split_dim)
+		void trier(){ // Trie les sommets qui sont dans la cellule, selon leur dimension split_dim
 			if (this->split_dim == 0) {
 				std::sort(this->sommets.begin(), this->sommets.end(), comparaisonSommetX); 
 			} else if (this->split_dim == 1) {

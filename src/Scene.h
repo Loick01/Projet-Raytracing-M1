@@ -77,7 +77,7 @@ public:
     	
 		std::vector<MeshVertex> sommets; // On récupère tous les sommets de la scène pour construire le KD Tree
 		
-		/* A utiliser si jamais j'arrive à faire le KD Tree pour plusieurs mesh
+		/* 
 		for (int i = 0 ; i < meshes.size() ; i++){
 			for (int j = 0 ; j < meshes[i].vertices.size() ; j++){
 				sommets.push_back(meshes[i].vertices[j]); // Récupère tous les MeshVertex de tous les sommets de tous les mesh
@@ -89,9 +89,8 @@ public:
 				sommets.push_back(meshes[0].vertices[j]); // Récupère tous les MeshVertex de tous les sommets de meshes[0] uniquement
 		}
 		
-		// Très bizarre mais je suis obligé de conserver dans un tableau à part les vector de MeshTriangle de chaque MeshVertex, d
 		std::vector<std::vector<MeshTriangle>> lesListesTriangles;
-		for (int i = 0 ; i < sommets.size() ; i++){ // Je sais pas pourquoi mais je suis obligé de faire ça pour copier la liste de Triangle, j'ai du me louper dans une allocation
+		for (int i = 0 ; i < sommets.size() ; i++){ 
 			//sommets[i].listeTriangles = meshes[0].vertices[i].listeTriangles;
 			lesListesTriangles.push_back(meshes[0].vertices[i].listeTriangles);
 		}
@@ -368,7 +367,7 @@ public:
         
         
         /*
-        À COMMENTER/DÉCOMMENTER si vous voulez essayer la version kd tree ATTENTION : Ne fonctionne pas correctement, si SEUIL est au delà du nombre de sommets dans le maillage
+        À COMMENTER/DÉCOMMENTER si vous voulez essayer la version kd tree
         // Avec KD Tree ----------------------------------------------------------------------------------------------------------------------------------------------------------------
         
         
@@ -382,7 +381,7 @@ public:
 		
 		
 		      
-        // Temporaire, je peux pas faire mieux pour l'instant que de faire avec un seul mesh
+        // Temporaire, pour l'instant avec un seul mesh
         std::vector<MeshVertex> vertices = meshes[0].vertices; // Ensemble des MeshVertex du mesh
         
         for (int i = 0 ; i < allTriangle->size() ; i++){
@@ -412,17 +411,15 @@ public:
     void exploreNodes(KdNode *cn, Ray const & ray, std::vector<MeshTriangle> *acc){
         if (cn->intersectNode(ray)){
         	//std::cout << "Intersecte\n";
-        	if (cn->isLeaf()){ // Si c'est une feuille de l'arbre
+        	if (cn->isLeaf()){
         		//std::cout << "C'est une feuille de l'arbre\n";
         		std::vector<MeshVertex> sommetsCellule = cn->getSommets();
         		std::vector<std::vector<MeshTriangle>> llt = cn->getLesListesTriangles();
         		for (int i = 0 ; i < sommetsCellule.size() ; i++){
-        			//std::cout << "ICI 1\n";
         			//std::cout << "Taille = " << sommetsCellule[i].listeTriangles.size() << "\n";
         			for (int j =0 ; j < llt[i].size() ; j++){
-        				//std::cout << "ICI 2\n";
-        				acc->push_back(llt[i][j]); // Problème : Pas impossible que ça ajoute plus d'une fois le même MeshTriangle (pas trop grave je pense...)
-        				//std::cout << "ICI 3\n";
+        				
+        				acc->push_back(llt[i][j]);
         			}
         		}
         	} else { // Sinon explorer fils gauche et droit (s'il existe)
@@ -490,7 +487,7 @@ public:
         Vec3 intersection = info_intersection[0];
         m.diffuse_material = info_intersection[2];
 		
-		if (m.type == Material_Mirror && NRemainingBounces > 0){ // Pour les matériaux réfléchissant. Normalement ça devrait marcher pour n'importe quel type d'objet mais je sais pas pourquoi ça ne marche que pour les sphères.
+		if (m.type == Material_Mirror && NRemainingBounces > 0){ // Pour les matériaux réfléchissant
 	    		
 	    	// Calcul du rayon réfléchi à partir du rayon initial
 			Vec3 new_dir=ray.direction() - 2 * (Vec3::dot(ray.direction(),normal_intersection)) * normal_intersection;
@@ -499,7 +496,7 @@ public:
 			Ray new_ray = Ray(intersection, new_dir);
 			m.diffuse_material = rayTraceRecursive(new_ray, NRemainingBounces - 1); // Appel récursif puisque computeLightPhong est appelé dans rayTraceRecursive
 			
-			return m.diffuse_material; // ATTENTION : Dans le cas d'un matériau réfléchissant, je ne calcule pas les ombres (j'imagine qu'il n'y a pas d'ombre sur un miroir). A voir s'il ne faut quand même pas prendre en compte certain paramètre, notamment la couleur de la lumière
+			return m.diffuse_material; // ATTENTION : Dans le cas d'un matériau réfléchissant, je ne calcule pas les ombres. A voir s'il ne faut quand même pas prendre en compte certain paramètre, notamment la couleur de la lumière
     	}
     	
     	
@@ -531,13 +528,19 @@ public:
 	    	
 	    	Vec3 M = (normal_utilise * cos(i1) - vecteur_observ ) / sin(i1);// Voir diapo récupéré sur internet
 	    	
-	    	M.normalize(); // A priori c'est déjà normalisé mais dans le soute je le fais quand même
+	    	M.normalize(); // A priori c'est déjà normalisé mais dans le doute je le fais quand même
 	    	Vec3 T = sin(i2) * M - cos(i2) * normal_utilise; // Vecteur directeur du rayon réfracté
 	    	T.normalize();
 	    	
-	    	Ray new_ray = Ray(intersection + T * 1e-3, T); // Le rayon réfracté ne doit surtout pas démarré là où a été trouvé l'intersection précédente, sinon il y aura un problème d'auto-intersection et donc il y aura des valeurs nan. Pour empecher ça, j'ajoute T * 1e-3 à l'origine du rayon
+	    	Ray new_ray = Ray(intersection + T * 1e-3, T); // Le rayon réfracté ne doit surtout pas démarrer là où a été trouvé l'intersection précédente, sinon il y aura un problème d'auto-intersection et donc il y aura des valeurs nan. Pour empecher ça, j'ajoute T * 1e-3 à l'origine du rayon
 	    	
-	    	return rayTraceRecursive(new_ray, NRemainingBounces); // Pour l'instant, uniquement des sphères parfaitement transparentes, donc on ne prends pas en compte la couleur de la sphère. Si on voulait que ce soit le cas, il faudrait modifier m.diffuse_material au lieu de directement retourner le résultat (comme ci-dessus) et continuer la fonction computeLightPhong avec cette valeur. ATTENTION --> Je pense qu'il faudra modifier m.diffuse_material uniquement au moment de la première réfraction du rayon, pour les autres réfractions (s'il y en a) il faudrait là par contre directement retourner le résultat (comme ci-dessus)
+	    	return rayTraceRecursive(new_ray, NRemainingBounces); 
+            // Pour l'instant, uniquement des sphères parfaitement transparentes, donc on ne prends pas en compte la couleur
+            // de la sphère. Si on voulait que ce soit le cas, il faudrait modifier m.diffuse_material au lieu de
+            // directement retourner le résultat (comme ci-dessus) et continuer la fonction computeLightPhong avec cette valeur.
+            // ATTENTION --> Je pense qu'il faudra modifier m.diffuse_material uniquement au moment de la première réfraction 
+            // du rayon, pour les autres réfractions (s'il y en a) il faudrait là par contre directement retourner le résultat 
+            // (comme ci-dessus)
 	    	
 	    	/*
 	    	Normalement pour la réfraction c'est bon, voir juste s'il ne faut pas s'occuper
