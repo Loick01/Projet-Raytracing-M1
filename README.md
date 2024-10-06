@@ -31,51 +31,51 @@ make
 
 <div style="display: flex; justify-content: space-around;">
     <figure style="margin: 10px; text-align: center;">
-        <img src="examples/hard_shadow.png" alt="Image 1" width="380">
+        <img src="examples/hard_shadow.png" alt="Image 1" width="350">
         <figcaption>Scène avec ombres dures</figcaption>
     </figure>
     <figure style="margin: 10px; text-align: center;">
-        <img src="examples/soft_shadow.png" alt="Image 2" width="380">
+        <img src="examples/soft_shadow.png" alt="Image 2" width="350">
         <figcaption>Scène avec ombres douces</figcaption>
     </figure>
 </div>
 <div style="display: flex; justify-content: space-around;">
     <figure style="margin: 10px; text-align: center;">
-        <img src="examples/colored_simple_sphere.png" alt="Image 1" width="380">
+        <img src="examples/colored_simple_sphere.png" alt="Image 3" width="350">
         <figcaption>Maillage d'une sphère simplifiée</figcaption>
     </figure>
     <figure style="margin: 10px; text-align: center;">
-        <img src="examples/colored_simple_interpolated_sphere.png" alt="Image 2" width="380">
+        <img src="examples/colored_simple_interpolated_sphere.png" alt="Image 4" width="350">
         <figcaption>Le même maillage, avec une interpolation des normales</figcaption>
     </figure>
 </div>
 <div style="display: flex; justify-content: space-around;">
     <figure style="margin: 10px; text-align: center;">
-        <img src="examples/tetrahedron.png" alt="Image 1" width="380">
+        <img src="examples/tetrahedron.png" alt="Image 5" width="350">
         <figcaption>Scène avec un maillage de tétraèdre</figcaption>
     </figure>
     <figure style="margin: 10px; text-align: center;">
-        <img src="examples/reflective_spheres.png" alt="Image 2" width="380">
+        <img src="examples/reflective_spheres.png" alt="Image 6" width="350">
         <figcaption>Scène avec des sphères réfléchissantes</figcaption>
     </figure>
 </div>
 <div style="display: flex; justify-content: space-around;">
     <figure style="margin: 10px; text-align: center;">
-        <img src="examples/fully_mirrored.png" alt="Image 1" width="380">
+        <img src="examples/fully_mirrored.png" alt="Image 7" width="350">
         <figcaption>Scène entièrement réfléchissante (rebonds limités à 2)</figcaption>
     </figure>
     <figure style="margin: 10px; text-align: center;">
-        <img src="examples/example_textured_scene_1.png" alt="Image 1" width="380">
+        <img src="examples/example_textured_scene_1.png" alt="Image 8" width="350">
         <figcaption>Exemple complet 1</figcaption>
     </figure>
 </div>
 <div style="display: flex; justify-content: space-around;">
     <figure style="margin: 10px; text-align: center;">
-        <img src="examples/example_textured_scene_2.png" alt="Image 1" width="380">
+        <img src="examples/example_textured_scene_2.png" alt="Image 9" width="350">
         <figcaption>Exemple complet 2</figcaption>
     </figure>
     <figure style="margin: 10px; text-align: center;">
-    <img src="examples/example_textured_scene_3.png" alt="Image 2" width="380">
+    <img src="examples/example_textured_scene_3.png" alt="Image 10" width="350">
     <figcaption>Exemple complet 3</figcaption>
 </figure>
 </div>
