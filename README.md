@@ -29,8 +29,8 @@ make
 
 ### Quelques exemples :
 
-<div style="display: flex; justify-content: space-around;">
-    <figure style="margin: 10px; text-align: center;">
+<p align="center">
+  <figure style="margin: 10px; text-align: center;">
         <img src="examples/hard_shadow.png" alt="Image 1" width="350">
         <figcaption>Scène avec ombres dures</figcaption>
     </figure>
@@ -38,7 +38,8 @@ make
         <img src="examples/soft_shadow.png" alt="Image 2" width="350">
         <figcaption>Scène avec ombres douces</figcaption>
     </figure>
-</div>
+</p>
+
 <div style="display: flex; justify-content: space-around;">
     <figure style="margin: 10px; text-align: center;">
         <img src="examples/colored_simple_sphere.png" alt="Image 3" width="350">
