@@ -30,10 +30,10 @@ make
 ### Quelques exemples :
 
 <p align="center">
-  <img src="examples/hard_shadow.png" width="380"/>
+  <img src="examples/hard_shadow.png" width="350"/>
   <br>
   <strong>Scène avec ombres dures</strong>
-  <img src="examples/soft_shadow.png" width="380"/>
+  <img src="examples/soft_shadow.png" width="350"/>
   <br>
   <strong>Scène avec ombres douces</strong>
 </p>
