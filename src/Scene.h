@@ -657,7 +657,7 @@ public:
 
 
     Vec3 rayTrace( Ray const & rayStart ) {
-        Vec3 color = rayTraceRecursive(rayStart,1);
+        Vec3 color = rayTraceRecursive(rayStart,2);
         return color; 
     }
 
@@ -685,7 +685,7 @@ public:
             
             s.material.isTextured = true;
             // load_ppm dans imageLoader.h
-            load_ppm(s.sphereTexture,"img/sphereTextures/s1.ppm"); 
+            load_ppm(s.sphereTexture,"img/sphereTextures/s7.ppm"); 
             //std::cout << "w = " << s.sphereTexture.w << ", h = " << s.sphereTexture.h << std::endl;
             
             s.build_arrays();
@@ -905,13 +905,13 @@ public:
             s.m_center = Vec3(1.0, -1.25, 0.5);
             s.m_radius = 0.75f;
             s.build_arrays();
-            //s.material.type = Material_Mirror;
+            s.material.type = Material_Mirror;
             s.material.diffuse_material = Vec3( 1.,0.,0. );
             s.material.specular_material = Vec3( 1.,0.,0. );
             s.material.ambient_material = s.material.diffuse_material / 6.f;
             s.material.shininess = 16;
-            s.material.transparency = 1.0;
-            s.material.index_medium = 0.9; // Si on mettait 1, les rayons réfractés seraient les mêmes que les rayons incidents, donc on verrait parfaitement à travers de la sphère
+            s.material.transparency = 0.0;
+            s.material.index_medium = 1; // Si on mettait 1, les rayons réfractés seraient les mêmes que les rayons incidents, donc on verrait parfaitement à travers de la sphère
         } 
         { //MIRRORED Sphere
             spheres.resize( spheres.size() + 1 );
@@ -919,13 +919,13 @@ public:
             s.m_center = Vec3(-1.0, -1.25, -0.5);
             s.m_radius = 0.75f;
             s.build_arrays();
-            s.material.type = Material_Mirror;
+            //s.material.type = Material_Mirror;
             s.material.diffuse_material = Vec3( 1.,1.,1. ); // Sphère blanche
             s.material.specular_material = Vec3(  1.,1.,1. );
             s.material.ambient_material = s.material.diffuse_material / 6.f;
             s.material.shininess = 16;
             s.material.transparency = 0.;
-            s.material.index_medium = 0.;
+            s.material.index_medium = 1;
         }
                 
         /*
@@ -996,7 +996,6 @@ public:
             light.isInCamSpace = false;
         }
         
-        
        	
         { // Mur de fond
             squares.resize( squares.size() + 1 );
@@ -1024,7 +1023,7 @@ public:
             Square & s = squares[squares.size() - 1];
             s.setQuad(Vec3(-2., -2., 2.), Vec3(1., 0, 0.), Vec3(0., 0., -1.), 4., 4.);
             s.build_arrays();
-            s.material.type = Material_Mirror;
+            //s.material.type = Material_Mirror;
             s.material.diffuse_material = Vec3( 0.,1.,0. ); // Plan vert
             s.material.specular_material = Vec3( 0.8,0.8,0.8 );
             s.material.shininess = 20;
@@ -1036,6 +1035,7 @@ public:
             s.material.isTextured = true;
             load_ppm(s.squareTexture,"img/squareTextures/nourriture.ppm");
             s.build_arrays();
+            s.material.type = Material_Mirror;
             s.material.diffuse_material = Vec3( 1.,1.,0. ); // Plan blanc
             s.material.specular_material = Vec3( 0.8,0.8,0.8 );
             s.material.shininess = 20;
@@ -1047,6 +1047,7 @@ public:
             s.material.isTextured = true;
             load_ppm(s.squareTexture,"img/squareTextures/nourriture.ppm");
             s.build_arrays();
+            s.material.type = Material_Mirror;
             s.material.diffuse_material = Vec3( 1.,0.,0. ); // Plan rouge
             s.material.specular_material = Vec3( 0.8,0.8,0.8 );
             s.material.shininess = 20;
