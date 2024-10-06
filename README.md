@@ -31,25 +31,45 @@ make
 
 <p align="center">
   <img src="examples/hard_shadow.png" width="380"/>
+  <br>
+  <strong>Scène avec ombres dures</strong>
   <img src="examples/soft_shadow.png" width="380"/>
+  <br>
+  <strong>Scène avec ombres douces</strong>
 </p>
 
 <p align="center">
   <img src="examples/colored_simple_sphere.png" width="380"/>
+  <br>
+  <strong>Maillage d'une sphère simplifiée</strong>
   <img src="examples/colored_simple_interpolated_sphere.png" width="380"/>
+  <br>
+  <strong>Le même maillage, avec une interpolation des normales</strong>
 </p>
 
 <p align="center">
   <img src="examples/tetrahedron.png" width="380"/>
+  <br>
+  <strong>Scène avec un maillage de tétraèdre</strong>
   <img src="examples/reflective_spheres.png" width="380"/>
+  <br>
+  <strong>Scène avec des sphères réfléchissantes</strong>
 </p>
 
 <p align="center">
   <img src="examples/fully_mirrored.png" width="380"/>
+  <br>
+  <strong>Scène entièrement réfléchissante (rebonds limités à 2)</strong>
   <img src="examples/example_textured_scene_2.png" width="380"/>
+  <br>
+  <strong>Exemple complet 1</strong>
 </p>
 
 <p align="center">
   <img src="examples/fully_mirrored.png" width="380"/>
+  <br>
+  <strong>Exemple complet 2</strong>
   <img src="examples/example_textured_scene_3.png" width="380"/>
+  <br>
+  <strong>Exemple complet 3</strong>
 </p>
