@@ -46,10 +46,10 @@ make
 
 <p align="center">
   <img src="examples/fully_mirrored.png" width="380" style="margin-right: 10px;"/>
-  <img src="examples/example_textured_scene_2.png" width="380" style="margin-left: 10px;"/>
+  <img src="examples/example_textured_scene_1.png" width="380" style="margin-left: 10px;"/>
 </p>
 
 <p align="center">
-  <img src="examples/fully_mirrored.png" width="380" style="margin-right: 10px;"/>
+  <img src="examples/example_textured_scene_2.png" width="380" style="margin-right: 10px;"/>
   <img src="examples/example_textured_scene_3.png" width="380" style="margin-left: 10px;"/>
 </p>
